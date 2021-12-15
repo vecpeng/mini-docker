@@ -12,6 +12,9 @@ func main() {
 	cmd := exec.Command("sh")
 
 	// 设置系统调用参数
+	// 使用UTS Namespace
+	// 隔离nodename和domainname两个系统标识
+	// 在UTS Namespace里面，每个Namespace允许有自己的hostname
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		Cloneflags: syscall.CLONE_NEWUTS,
 	}
